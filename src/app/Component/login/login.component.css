@@ -1,0 +1,10 @@
+.login-container
+{    
+    height: 80%;
+    background-image: linear-gradient(90deg,#e14141,rgba(56, 56, 219, 0.479));
+}
+.login-banner
+{
+    width: 100%;
+    display: flex;
+}
