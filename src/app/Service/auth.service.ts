@@ -1,16 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../Model/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor(private http:HttpClient,private router:Router) { }
-  login(username:string,password:string)
-  {
-    return this.http.post<any>(`https://localhost:44383/api/v1/lms/user/login`, { username, password });
+  private userSubject: BehaviorSubject<User | null>;
+  public user?: Observable<User | null>;
+  constructor(private http:HttpClient,private router:Router) {
+        this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
+        this.user = this.userSubject.asObservable();
+   }
+  public get userValue() {
+    return this.userSubject.value;
   }
+
+login(username: string, password: string) {     
+    return this.http.post<any>(`${environment.apiUrl}user/login?username=`+username+`&password=`+password,'')
+        .pipe(map(user => {            
+            localStorage.setItem('user', JSON.stringify(user));
+            this.userSubject.next(user);
+            return user;
+        }));
+}
+
+logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('user');
+    this.userSubject.next(null);
+    this.router.navigate(['login']);
+}
 }

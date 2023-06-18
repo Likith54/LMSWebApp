@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { first } from 'rxjs';
 import { AuthService } from 'src/app/Service/auth.service'; 
 
 @Component({
@@ -10,6 +11,9 @@ import { AuthService } from 'src/app/Service/auth.service';
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
+  loading = false;
+  submitted = false;
+  error = '';
   public loginInvalid: boolean = false;
   constructor(private fb:FormBuilder,private authService:AuthService,private router:Router) { }
 
@@ -20,14 +24,26 @@ export class LoginComponent implements OnInit {
     });
   }
 onSubmit(){
-  this.loginInvalid = false;
-  this.router.navigate(['course']);  
-  // if(this.form.valid)
-  // {
-  //   var Username=this.form.get('username')?.value;
-  //   var Pwd=this.form.get('password')?.value;
-  //   this.authService.login(Username,Pwd);    
-  // }  
+this.submitted=true;
+        // stop here if form is invalid
+        if (this.form.invalid) {
+          return;
+      }
+
+      this.error = '';
+      this.loading = true;
+      this.authService.login(this.form.get('username')?.value, this.form.get('password')?.value)
+          .pipe(first())
+          .subscribe({
+              next: () => {
+                  // get return url from route parameters or default to '/'                  
+                  this.router.navigate(["course"]);
+              },
+              error: error => {
+                  this.error = error;
+                  this.loading = false;
+              }
+          }); 
 }
 onCancel(){
   this.form.reset();
