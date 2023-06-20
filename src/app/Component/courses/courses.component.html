@@ -1,7 +1,6 @@
 <div class="example-container mat-elevation-z8">
-  
-    <div class="example-table-container">
-  
+  <button mat-raised-button color="primary" (click)="redirecttoAddCourse()">Add Course</button>
+    <div class="example-table-container">  
       <table mat-table [dataSource]="data" class="example-table"
              matSort  matSortDirection="desc">        
         <ng-container matColumnDef="id">

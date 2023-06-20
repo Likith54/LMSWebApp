@@ -1,0 +1,38 @@
+<div class="add-course-container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()"  >
+        <h2>Learning Management System</h2>
+        <mat-form-field class="full-width-input">
+            <input matInput placeholder="Course Name" formControlName="courseName" required>
+            <mat-error>
+              Please provide a valid Course Name
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input">
+            <input matInput type="number" placeholder="Course Duration" formControlName="courseDuration" required >
+            <mat-error>
+              Please provide a valid Course Duration
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Course Technology" formControlName="courseTechnology" required>
+            <mat-error>
+              Please provide a valid Course Technology
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input">
+            <input matInput placeholder="Course Launch URL" formControlName="courseLaunchURL" required>
+            <mat-error>
+              Please provide a valid Course Launch URL
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width-input">
+            <textarea placeholder="Course Description" formControlName="courseDescription" matInput required></textarea>            
+            <mat-error>
+              Please provide a valid Course Description
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" >Submit</button>           
+          <button mat-raised-button color="primary" (click)="form.reset()">Clear</button> 
+          <button mat-raised-button color="primary" (click)="gotoCourse()">Cancel</button> 
+    </form>
+</div>

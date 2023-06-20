@@ -14,12 +14,14 @@ import { MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AuthInterceptor } from './auth.interceptor';
+import { AddCourseComponent } from './Component/add-course/add-course.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CoursesComponent,            
+    CoursesComponent,
+    AddCourseComponent,            
   ],
   imports: [
     BrowserModule,
