@@ -17,4 +17,8 @@ export class CourseService {
   {    
     return this.http.post<Course>(`${environment.apiUrl}courses/add`,courseDetails);
   }
+  deleteCourse(id:string)
+  {
+    return this.http.delete(`${environment.apiUrl}courses/delete?id=`+id);
+  }
 }

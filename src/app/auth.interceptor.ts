@@ -18,6 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const user = this.authService.userValue;
     const isLoggedIn = user?.jwtToken;
     const isApiUrl = request.url.startsWith(environment.apiUrl);
+    localStorage.setItem("isLoggedIn","true");
     if (isLoggedIn && isApiUrl) {
         request = request.clone({
             setHeaders: {

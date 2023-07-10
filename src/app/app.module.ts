@@ -15,6 +15,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AuthInterceptor } from './auth.interceptor';
 import { AddCourseComponent } from './Component/add-course/add-course.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AddCourseComponent } from './Component/add-course/add-course.component'
     MatSortModule,
     MatInputModule,
     MatCheckboxModule,
-    ReactiveFormsModule            
+    ReactiveFormsModule,
+    MatIconModule            
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
