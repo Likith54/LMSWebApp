@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './Service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,14 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'LMSWebApp';
   isloggedIn:any;
-  constructor(private router:Router){}
+  Username:any;
+  constructor(private router:Router,private auth:AuthService){}
   ngOnInit(): void {    
     this.isloggedIn=localStorage.getItem("isLoggedIn")?.toString();
+    this.Username=localStorage.getItem("LoggedinUser")?.toString();
   }  
   redirecttoLogin()
 {
-  this.isloggedIn="false";
-  localStorage.setItem("isLoggedIn","false");
-  this.router.navigate(['Login'])
+  this.auth.logout();  
 }
 }

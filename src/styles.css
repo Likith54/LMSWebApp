@@ -1,7 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    background-color: #000000c7;
+    background-color: whitesmoke;
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+button
+{
+border: none;
+height: 30px;
+}
+
+.primary
+{
+    color: blue;    
+}
+.success
+{
+    color: green;    
+}
+
+.danger{
+    color: red;      
+}

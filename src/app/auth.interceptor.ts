@@ -15,10 +15,10 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService:AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {    
-    const user = this.authService.userValue;
+    const user = this.authService.userValue;    
     const isLoggedIn = user?.jwtToken;
     const isApiUrl = request.url.startsWith(environment.apiUrl);
-    localStorage.setItem("isLoggedIn","true");
+    localStorage.setItem("isLoggedIn","true");    
     if (isLoggedIn && isApiUrl) {
         request = request.clone({
             setHeaders: {

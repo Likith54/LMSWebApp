@@ -1,3 +1,42 @@
 .mat-column-id,.mat-column-courseId{
     display: none;
 }
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    background-color: white;
+  }
+  
+  .example-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  .mat-card{
+    width: 350px;
+    height: 550px;
+    margin: 2px;
+    box-shadow: 2px 1px 2px 1px #afafaf
+  }
+  .mat-card .mat-card-title{
+    height: 50px;
+  }
+   .mat-card-image{
+    height: 280px;
+    width: 300px;
+   }
+   .mat-card .mat-card-footer{
+    margin: 0px;
+    height: 50px;
+   }

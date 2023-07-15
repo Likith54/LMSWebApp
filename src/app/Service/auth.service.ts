@@ -24,6 +24,7 @@ login(username: string, password: string) {
         .pipe(map(user => {            
             localStorage.setItem('user', JSON.stringify(user));
             this.userSubject.next(user);
+            localStorage.setItem("LoggedinUser",user["name"]);            
             return user;
         }));
 }
@@ -31,7 +32,9 @@ login(username: string, password: string) {
 logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("LoggedinUser");
     this.userSubject.next(null);
-    this.router.navigate(['login']);
+    this.router.navigate(['Login']);    
 }
 }
